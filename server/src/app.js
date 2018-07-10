@@ -2,6 +2,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyparser = require('body-parser')
 const express = require('express')
+const config = require('./configure/config')
 var Console = console
 var exp = express()
 exp.use(morgan('combined')) //log
@@ -14,7 +15,7 @@ exp.post('/login', (req, res)=>{
     Console.log('/login command!')
 })
 
-var svr = exp.listen(process.env.PORT || 8081, ()=>{    
+var svr = exp.listen(config.Port, ()=>{    
     var address = svr.address().address
     var port = svr.address().port
     Console.log('server start '+address+' port:'+ port)

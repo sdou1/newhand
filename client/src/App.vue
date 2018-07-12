@@ -1,5 +1,5 @@
 <template>
-  <div id="mainvue">
+  <div id="app">
     <img src="./assets/logo.png">
     <p>{{message}}</p>
     <router-link to="/">home</router-link>
@@ -30,4 +30,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.input-group-text-field input{
+  border-bottom: 1px solid black
+}
+
 </style>

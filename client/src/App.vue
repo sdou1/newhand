@@ -1,37 +1,40 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <p>{{message}}</p>
-    <router-link to="/">home</router-link>
-    <router-link to="/login">login</router-link>
-    <router-view></router-view>
+    <v-app>
+      <page-header/>
+      <v-container>
+        <img src="./assets/logo.png">
+        <p>{{message}}</p>
+        <router-view></router-view>
+      </v-container>
+    </v-app>
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 
 <script>
-import router from './router/defineRouter'
-export default {
-  data:function(){
-    return {
-      message: "I love you"
+  import router from './router/defineRouter'
+  import pageheader from "./components/Header"
+  export default {
+    data: function () {
+      return {
+        message: "I love you"
+      }
+    },
+    router: router,
+    components: {
+      PageHeader: pageheader
     }
-  },
-  router: router
-}
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.input-group-text-field input{
-  border-bottom: 1px solid black
-}
-
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>

@@ -1,12 +1,18 @@
 const {
     User
 } = require('../models')
+const bcrypt = require('../bcrypt')
 var Console = console
 module.exports = {
     async register(req, res) {
         try {
             Console.log(req.body.email)
-            var user = await User.create(req.body)
+            var hash = bcrypt.generateHash(req.body.password)
+            Console.log(hash)
+            var user = await User.create({
+                'email': req.body.email,
+                'password': hash
+            })
             res.send(user.toJSON())
             Console.log(user.toJSON())
         } catch (err) {
@@ -27,12 +33,12 @@ module.exports = {
                     email: req.body.email
                 }
             })
-
+            
             if (!user) {
                 res.status(400).send({
                     error: `the mail (${req.body.email}) is not registered, please register first!`
                 })
-            } else if (user.password !== req.body.password) {
+            } else if (!bcrypt.compareHash(req.body.password, user.password)) {
                 res.status(400).send({
                     error: 'the password is wrong!'
                 })

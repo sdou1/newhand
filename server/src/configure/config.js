@@ -11,5 +11,8 @@ module.exports={
             host: process.env.DB_HOST || 'localhost',
             storage: __dirname + 'mysql.sqlite'
         }
+    },
+    Bcrypt: {
+        salt: 10
     }
 }

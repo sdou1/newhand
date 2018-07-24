@@ -43,7 +43,20 @@
                     .then((rs) => {
                         Console.log("res: " + rs)
                         this.error = ''
-                    })
+                        this.$store.dispatch(//{
+                            //type:'SetuserInfo',
+                            //userInfo:
+                            'SetUserInfo',
+                            {
+                                name: this.email,
+                                password: this.password,
+                                login: true
+                            }
+                        //})
+                        //}
+                        )
+                    }
+                    )
                     .catch(
                         (error) => {
                             Console.log("error: " + error)

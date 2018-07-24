@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <page-header/>
+      <PageHeader />
       <v-container>
         <img src="./assets/logo.png">
         <p>{{message}}</p>
@@ -15,12 +15,14 @@
 <script>
   import router from './router/defineRouter'
   import pageheader from "./components/Header"
+  import store from "./store"
   export default {
     data: function () {
       return {
         message: "I love you"
       }
     },
+    store,
     router: router,
     components: {
       PageHeader: pageheader
@@ -35,6 +37,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    
   }
 </style>

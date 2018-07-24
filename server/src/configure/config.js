@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports={
-    Port: process.env.PORT || 8081,
+    Port: process.env.PORT || 8082,
     RootPath: process.env.ROOTPATH || path.normalize(__dirname + '../../../../client/dist/'),
     db:{
         database: process.env.DB_NAME || 'server',

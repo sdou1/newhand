@@ -1,25 +1,35 @@
+const jwt = require('jsonwebtoken')
 const {
     User
 } = require('../models')
-const bcrypt = require('../bcrypt')
+const config = require('../configure/config')
 var Console = console
+function jswSignUser(userInfo)
+{
+    const ONE_WEEK=60*60*24*7
+    return jwt.sign(userInfo, config.JwtToken.JwtSecret,{
+        expiresIn: ONE_WEEK
+    })
+}
+
 module.exports = {
     async register(req, res) {
         try {
             Console.log(req.body.email)
-            var hash = bcrypt.generateHash(req.body.password)
-            Console.log(hash)
-            var user = await User.create({
-                'email': req.body.email,
-                'password': hash
+            var user = await User.create(req.body)
+            var token = jswSignUser({
+                name: req.body.email
             })
-            res.send(user.toJSON())
-            Console.log(user.toJSON())
+
+            res.send({
+                user,
+                JWT: token,
+                message: 'register successful, welcome!'
+            })
         } catch (err) {
             res.status(400).send({
                 error: `the email(${req.body.email}) account is already in use`
             })
-
             Console.log('error : ')
         }
         Console.log('register end')
@@ -38,12 +48,18 @@ module.exports = {
                 res.status(400).send({
                     error: `the mail (${req.body.email}) is not registered, please register first!`
                 })
-            } else if (!bcrypt.compareHash(req.body.password, user.password)) {
+            } else if (!user.comparePassword(req.body.password)) {
                 res.status(400).send({
                     error: 'the password is wrong!'
                 })
             } else {
+                var token = jswSignUser({
+                    name: req.body.email
+                })
+
                 res.send({
+                    user,
+                    JWT: token,
                     message: 'login successful, welcome!'
                 })
             }

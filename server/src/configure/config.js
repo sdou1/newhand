@@ -13,6 +13,10 @@ module.exports={
         }
     },
     Bcrypt: {
-        salt: 10
+        salt: 10 //bcryptjs
+    },
+    JwtToken:{
+        JwtSecret: process.env.JWT_SECRET || 'secret'
     }
+    
 }

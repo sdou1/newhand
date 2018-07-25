@@ -11,7 +11,7 @@
                 Register
             </v-btn>
             <button @click="gotoregister('/login')" v-if='UserStatus'>Login</button>
-            <v-btn to='/hello' @click='$store.state.login=false' flat dark v-if='!UserStatus'>
+            <v-btn to='/login' @click='$store.state.token=""' flat dark v-if='!UserStatus'>
                 Log Out
             </v-btn>
             <router-link to="/hello" flat dark>
@@ -35,7 +35,7 @@
             UserStatus() {
                 //return true
                 Console.log('status:' + this.$store.state.login)
-                return !this.$store.state.login 
+                return this.$store.state.token.trim().length===0 
             }
         },
     }

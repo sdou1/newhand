@@ -39,11 +39,14 @@
     },
     methods: {
       async login() {
-        Console.log(this.email+":"+this.password)
+        Console.log(this.email + ":" + this.password)
         await AuthenticationServices.Login(this.email, this.password)
           .then((rs) => {
             Console.log(rs)
             this.error = ''
+            this.$store.dispatch('SetUserName', rs.data.user.email)
+            this.$store.dispatch('SetToken', rs.data.JWT)
+            this.$router.push('/hello')
           })
           .catch(
             (error) =>

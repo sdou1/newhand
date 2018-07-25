@@ -43,18 +43,9 @@
                     .then((rs) => {
                         Console.log("res: " + rs)
                         this.error = ''
-                        this.$store.dispatch(//{
-                            //type:'SetuserInfo',
-                            //userInfo:
-                            'SetUserInfo',
-                            {
-                                name: this.email,
-                                password: this.password,
-                                login: true
-                            }
-                        //})
-                        //}
-                        )
+                        this.$store.dispatch('SetUserName', rs.data.user.email)
+                        this.$store.dispatch('SetToken', rs.data.JWT)
+                        this.$router.push('/hello')
                     }
                     )
                     .catch(

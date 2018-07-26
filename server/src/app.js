@@ -13,8 +13,8 @@ exp.use(bodyparser.json())
 exp.use(cors()) // http zone
 //initialize route
 route.register(exp)
-//exp.use(express.static(config.RootPath))
-sequelize.sync({force: true})
+exp.use(express.static(config.RootPath))
+sequelize.sync() //{force: true}
 .then(()=>{
     exp.listen(config.Port)
     Console.log('server start at '+config.Port)

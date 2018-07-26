@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <PageHeader />
-      <v-container>
+      <v-container fluid>
         <img src="./assets/logo.png">
         <p>{{message}}</p>
         <router-view></router-view>

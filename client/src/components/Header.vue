@@ -7,11 +7,11 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <v-btn to="/register" flat dark v-if='UserStatus'>
+            <v-btn to="/register" flat dark v-if='UnLogin'>
                 Register
             </v-btn>
-            <button @click="gotoregister('/login')" v-if='UserStatus'>Login</button>
-            <v-btn to='/login' @click='$store.state.token=""' flat dark v-if='!UserStatus'>
+            <button @click="gotoregister('/login')" v-if='UnLogin'>Login</button>
+            <v-btn to='/login' @click='$store.dispatch("SetToken","")' flat dark v-if='!UnLogin'>
                 Log Out
             </v-btn>
             <router-link to="/hello" flat dark>
@@ -32,10 +32,12 @@
             }
         },
         computed: {
-            UserStatus() {
+            UnLogin() {
                 //return true
-                Console.log('status:' + this.$store.state.login)
-                return this.$store.state.token.trim().length===0 
+                Console.log('status:' + this.$store.state.token)
+                if (!this.$store.state.token || this.$store.state.token.trim().length===0)
+                    return true
+                return false
             }
         },
     }

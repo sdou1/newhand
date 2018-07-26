@@ -1,23 +1,24 @@
-const jwt = require('jsonwebtoken')
+//const jwt = require('jsonwebtoken')
 const {
     User
 } = require('../models')
-const config = require('../configure/config')
+//const config = require('../configure/config')
+const jwt = require('../jwttoken')
 var Console = console
-function jswSignUser(userInfo)
+/*function jswSignUser(userInfo)
 {
     const ONE_WEEK=60*60*24*7
     return jwt.sign(userInfo, config.JwtToken.JwtSecret,{
         expiresIn: ONE_WEEK
     })
 }
-
+*/
 module.exports = {
     async register(req, res) {
         try {
             Console.log(req.body.email)
             var user = await User.create(req.body)
-            var token = jswSignUser({
+            var token = jwt.GenerateToken({
                 name: req.body.email
             })
 
@@ -53,7 +54,7 @@ module.exports = {
                     error: 'the password is wrong!'
                 })
             } else {
-                var token = jswSignUser({
+                var token = jwt.GenerateToken({
                     name: req.body.email
                 })
 

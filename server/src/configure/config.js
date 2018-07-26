@@ -18,5 +18,4 @@ module.exports={
     JwtToken:{
         JwtSecret: process.env.JWT_SECRET || 'secret'
     }
-    
 }

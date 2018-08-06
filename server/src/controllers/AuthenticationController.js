@@ -2,17 +2,8 @@
 const {
     User
 } = require('../models')
-//const config = require('../configure/config')
 const jwt = require('../jwttoken')
 var Console = console
-/*function jswSignUser(userInfo)
-{
-    const ONE_WEEK=60*60*24*7
-    return jwt.sign(userInfo, config.JwtToken.JwtSecret,{
-        expiresIn: ONE_WEEK
-    })
-}
-*/
 module.exports = {
     async register(req, res) {
         try {
@@ -44,7 +35,7 @@ module.exports = {
                     email: req.body.email
                 }
             })
-            
+
             if (!user) {
                 res.status(400).send({
                     error: `the mail (${req.body.email}) is not registered, please register first!`
@@ -69,5 +60,12 @@ module.exports = {
         } catch (error) {
             res.status(400).send(error.toJSON())
         }
+    },
+
+    async checkLogin(req, res) {
+        //Console.log(req)
+        if (!req.query || !req.query.token || !jwt.CheckToken(req.query.token))
+            res.status(501).send('please log in!')
+        res.send('log successful')
     }
 }

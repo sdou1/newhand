@@ -1,7 +1,17 @@
 import axios from 'axios'
-export default
-    ()=>{
-        return axios.create({
-            baseURL: 'http://localhost:8082'
-        })
-    }
+import utility from '../utility'
+export default () => {
+    var instance = axios.create({
+        baseURL: 'http://localhost:8082'
+    })
+    instance.interceptors.request.use(
+        config => {
+            config.params=config.params || {}
+            config.params.token = utility.getCookie('token')
+            return config
+        }, error => {
+            Promise.reject(error)
+        }
+    )
+    return instance
+}

@@ -12,7 +12,8 @@ module.exports = {
         )
         //exp.get('*.*',ClientController)
         exp.get('/',ClientController)
-        exp.get('/getsongs/*',SongController.GetAllSongs)
+        exp.get('/getsongs',SongController.GetAllSongs)
         exp.post('/postsong',SongController.PostSong)
+        exp.get('/checklogin', AuthenticationController.checkLogin)
     },
 }

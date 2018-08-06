@@ -37,6 +37,7 @@
                 ).catch(
                     (error) => {
                         Console.log(error.respone.data.error)
+                        this.$router.push('/login')
                     })
             }
         },

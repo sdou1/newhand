@@ -3,25 +3,27 @@ const config = require('../configure/config')
 var Console = console
 module.exports = {
     GenerateToken(info) {
-        const ONE_WEEK = 60 * 60 * 24 * 7
+        const ONE_WEEK = 60// * 60 * 24 * 7
         return jwt.sign(info, config.JwtToken.JwtSecret, {
             expiresIn: ONE_WEEK
         })
     },
-    async VerifyToken(token){
+    async VerifyToken(token) {
         var info = null
         Console.log(token)
-        await jwt.verify(token, config.JwtToken.JwtSecret,function(error, decode){
-            if(!error)
-            {
+        await jwt.verify(token, config.JwtToken.JwtSecret, function (error, decode) {
+            if (!error) {
                 info = decode
-            }
-            else
-            {
+            } else {
                 Console.log(error)
             }
         })
         return info
+    },
+
+    async CheckToken(token) {
+        var userinfo = await this.VerifyToken(token)
+        return userinfo
     }
 
 

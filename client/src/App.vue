@@ -15,14 +15,14 @@
 <script>
   import router from './router/defineRouter'
   import pageheader from "./components/Header"
-  import store from "./store"
+  
   export default {
     data: function () {
       return {
         message: "I love you"
       }
     },
-    store,
+    //store,
     router: router,
     components: {
       PageHeader: pageheader

@@ -37,7 +37,7 @@
             async Register() {
                 await AuthenticationServices.Register(this.email, this.password)
                     .then((rs) => {
-                        Console.log("res: " + rs)
+                        //Console.log("res: " + rs)
                         this.error = ''
                         this.$store.dispatch('SetUserName', rs.data.user.email)
                         this.$store.dispatch('SetToken', rs.data.JWT)

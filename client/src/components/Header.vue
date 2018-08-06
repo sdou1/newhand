@@ -34,7 +34,7 @@
         computed: {
             UnLogin() {
                 //return true
-                Console.log('status:' + this.$store.state.token)
+                //Console.log('status:' + this.$store.state.token)
                 if (!this.$store.state.token || this.$store.state.token.trim().length===0)
                     return true
                 return false

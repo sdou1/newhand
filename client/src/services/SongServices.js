@@ -1,7 +1,7 @@
 import API from './Api'
 export default {
-    GetSongs(token) {
-        return API().get('/getsongs'+'/token='+token)
+    GetSongs() {
+        return API().get('/getsongs')
     },
     PostSong(song){
         return API().post('/postsong',song)

@@ -38,7 +38,7 @@
         Console.log(this.email + ":" + this.password)
         await AuthenticationServices.Login(this.email, this.password)
           .then((rs) => {
-            Console.log(rs)
+            //Console.log(rs)
             this.error = ''
             this.$store.dispatch('SetUserName', rs.data.user.email)
             this.$store.dispatch('SetToken', rs.data.JWT)

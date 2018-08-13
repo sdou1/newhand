@@ -30,6 +30,7 @@ var routers = [{
             requrieLogin: true
         }
     },
+
     {
         path: '/register',
         name: 'register',

@@ -23,12 +23,13 @@ module.exports = {
 
     async GetAllSongs(req, res) {
         try {
-            var userinfo = await jwt.CheckToken(req.query.token)
+            Console.log('GetAllSongs')
+            var userinfo = await jwt.CheckToken(req.cookies['token'])
             if (!userinfo)
             {
                 Console.log('no user info')
                 throw 'the user is logged in so long, need log in again'
-            }    
+            }   
             const songs = await Song.findAll()
             if (songs) {
                 res.send(songs)

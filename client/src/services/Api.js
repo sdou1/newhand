@@ -2,7 +2,8 @@ import axios from 'axios'
 import utility from '../utility'
 export default () => {
     var instance = axios.create({
-        baseURL: 'http://localhost:8082'
+        baseURL: 'http://localhost:8082',
+        withCredentials: true
     })
     instance.interceptors.request.use(
         config => {

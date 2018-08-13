@@ -6,14 +6,16 @@ import Register from '../components/Register'
 import Songs from '../components/Songs'
 import CreateSong from '../components/CreateSong'
 import Cookie from "../utility"
-import API from '../services/Api'
+
 vue.use(vueRouter)
 
 var routers = [{
         path: '/hello',
         name: 'hello',
         component: HelloWorld,
-        requrieLogin: true
+        meta: {
+            requrieLogin: true
+        }
     },
     {
         path: '/login',
@@ -52,10 +54,11 @@ var router = new vueRouter({
 })
 var Console = console
 import store from "../store"
+import authenticationServices from '../services/AuthenticationServices'
 //before switch page
 router.beforeEach(function (to, from, next) {
     if (to.meta.requrieLogin) {
-        API().get('/checklogin').then(res => {
+        authenticationServices.CheckLogin().then(res => {
             Console.log('checklogin')
             Console.log(res)
             next()

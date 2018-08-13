@@ -1,7 +1,7 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./controllerpolicy/AuthenticationControllerPolicy')
 const ClientController = require('./clientcontrollers/ClientControllers')
-const SongController = require('./controllers/SongController')
+//const SongController = require('./controllers/SongController')
 module.exports = {
     register(exp) {
         exp.post('/register',
@@ -12,8 +12,8 @@ module.exports = {
         )
         //exp.get('*.*',ClientController)
         exp.get('/',ClientController)
-        exp.get('/getsongs',SongController.GetAllSongs)
-        exp.post('/postsong',SongController.PostSong)
+        //exp.get('/getsongs',SongController.GetAllSongs)
+        //exp.post('/postsong',SongController.PostSong)
         exp.get('/checklogin', AuthenticationController.checkLogin)
     },
 }

@@ -3,7 +3,7 @@ const config = require('../configure/config')
 var Console = console
 module.exports = {
     GenerateToken(info) {
-        const ONE_WEEK = 60// * 60 * 24 * 7
+        const ONE_WEEK = 60 * 60 * 24 * 7
         return jwt.sign(info, config.JwtToken.JwtSecret, {
             expiresIn: ONE_WEEK
         })
@@ -22,6 +22,7 @@ module.exports = {
     },
 
     async CheckToken(token) {
+        Console.log('check token: '+ token)
         var userinfo = await this.VerifyToken(token)
         return userinfo
     }

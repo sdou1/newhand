@@ -3,7 +3,7 @@ import Vue from 'vue'
 import {
     Store
 } from 'vuex'
-import cookie from '../utility'
+//import cookie from '../utility'
 Vue.use(Vuex)
 var Console = console
 export default new Store({
@@ -15,18 +15,18 @@ export default new Store({
         SetUserName(state, name) {
             state.name = name
             Console.log('user: ' + name)
-            if (name)
+            /*if (name)
                 cookie.setCookie('username', name, 1)
             else
-                cookie.delCookie('username')
+                cookie.delCookie('username')*/
         },
         SetToken(state, token) {
             Console.log(token)
             state.token = token
-            if (token)
+            /*if (token)
                 cookie.setCookie('token', token, 1)
             else
-                cookie.delCookie('token')
+                cookie.delCookie('token')*/
         }
     },
     actions: {

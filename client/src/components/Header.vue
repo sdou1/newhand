@@ -14,6 +14,7 @@
             <v-btn to='/login' @click='$store.dispatch("SetToken","")' flat dark v-if='!UnLogin'>
                 Log Out
             </v-btn>
+            <v-btn to='/song' flat dark v-if='!UnLogin'>Song</v-btn>
             <router-link to="/hello" flat dark>
                 Go home
             </router-link>

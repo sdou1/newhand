@@ -6,19 +6,22 @@
             </span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items>
+        <v-toolbar-items class="btn">
             <v-btn to="/register" flat dark v-if='UnLogin'>
                 Register
             </v-btn>
             <button @click="gotoregister('/login')" v-if='UnLogin'>Login</button>
-            <v-btn to='/login' @click='$store.dispatch("SetToken","")' flat dark v-if='!UnLogin'>
-                Log Out
-            </v-btn>
             <v-btn to='/song' flat dark v-if='!UnLogin'>Song</v-btn>
             <router-link to="/hello" flat dark>
                 Go home
             </router-link>
+            <v-btn to='/login' @click='$store.dispatch("SetToken","")' flat dark v-if='!UnLogin'>
+                Log Out
+            </v-btn>
         </v-toolbar-items>
+        <v-toolbar-title class="btn" v-if='!UnLogin'>
+            <span>{{this.$store.state.name}}</span>
+        </v-toolbar-title>
     </v-toolbar>
 </template>
 
@@ -44,4 +47,9 @@
     }
 </script>
 <style scoped>
+.btn{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: green;    
+    font-size: 16px
+}
 </style>

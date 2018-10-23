@@ -17,19 +17,36 @@
             <router-link to="/hello" flat dark>
                 Go home
             </router-link>
+            <button @click="getAccessToken()">AccessToken</button>
+            <p>{{msg}}</p>
         </v-toolbar-items>
     </v-toolbar>
 </template>
 
 <script>
     var Console = console;
+    import baiduAiServices from '../services/BaiduAiServices'
     export default {
+        data(){
+            return {
+                msg: 'content'
+            }
+        },
         methods: {
             gotoregister(pagename) {
                 Console.log(pagename)
                 //this.nextpagename=this.nextpagename==='/hello'?'/register':'/hello';
                 this.$router.push(pagename)
-            }
+            },
+            getAccessToken(){
+                        baiduAiServices.getAccessToken().then(
+                            respone=>{
+                                this.msg = respone.data.access_token;
+                            }
+                        ).catch(error=>{
+                            this.msg = error.respone.data.error;
+                        })
+            },
         },
         computed: {
             UnLogin() {
@@ -43,4 +60,7 @@
     }
 </script>
 <style scoped>
+.msgstyle{
+    color: darkmagenta
+}
 </style>

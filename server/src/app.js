@@ -8,6 +8,7 @@ const {sequelize} = require('./models') //sqlite db
 const cookieparser = require('cookie-parser')
 const songRouter = require('./router/songRouter')
 const userRouter = require('./router/userRouter')
+const baiduAiRouter = require('./router/BaiduAiRouter')
 var Console = console
 var exp = express()
 exp.use(morgan('combined')) //log
@@ -22,6 +23,7 @@ exp.use(cookieparser()) //cookie-parser to set and parser the cookie information
 exp.use(express.static(config.RootPath))  //the client file, jpg, html, js and so on
 exp.use('/song', songRouter)             // the song router, process get or post for path '/song/*' ,
 exp.use('/user', userRouter)             // the user router, process get or post for path '/user/*' ,
+exp.use('/baiduai', baiduAiRouter)
 sequelize.sync() //{force: true}
 .then(()=>{
     exp.listen(config.Port)

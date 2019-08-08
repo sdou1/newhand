@@ -1,4 +1,4 @@
-var ws = new WebSocket('ws://localhost:8082/socketserver', 'protocolOne')
+var ws = new WebSocket('ws://localhost:8082')
 var Console = console
 ws.onerror = (error) => {
     Console.log('ws error: ' + error)

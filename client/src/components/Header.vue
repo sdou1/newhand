@@ -38,6 +38,7 @@
                 Console.log(pagename)
                 //this.nextpagename=this.nextpagename==='/hello'?'/register':'/hello';
                 this.$router.push(pagename)
+                Console.log("change page");
                 if(socketApi.readyState === WebSocket.OPEN)
                 {
                     Console.log('socket api is ready')

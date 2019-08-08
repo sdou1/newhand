@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>Register</h1>
+    <h1>Login</h1>
     <v-container>
       <Panel title="Login">
         <div class='pl-4 pr-4 pt-2 pb-2'>

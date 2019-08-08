@@ -6,7 +6,6 @@
             </div>
             <p class='err'> {{error}}</p>
         </Panel>
-        <v-btn to="/song/add">Add Song</v-btn>
     </v-container>
 </template>
 <script>

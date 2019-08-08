@@ -9,7 +9,13 @@ const cookieparser = require('cookie-parser')
 const songRouter = require('./router/songRouter')
 const userRouter = require('./router/userRouter')
 const baiduAiRouter = require('./router/BaiduAiRouter')
+const hello = require('C:\\Driver Virtual\\E\\study\\Electron\\Addon\\ElectronAddon\\build\\Release\\hello')
+
+
+
 var Console = console
+var rs = hello.hello()
+Console.log(rs)
 var exp = express()
 exp.use(morgan('combined')) //log
 exp.use(bodyparser.json())

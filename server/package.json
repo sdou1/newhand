@@ -24,7 +24,7 @@
     "mysql2": "^1.6.1",
     "save": "^2.3.2",
     "sequelize": "^4.38.0",
-    "sqlite3": "^4.0.1"
+    "sqlite3": "^4.0.9"
   },
   "devDependencies": {
     "eslint": "^5.0.1",
